@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple, modern small business website focused on quality and service.">
+    <title>Small Business | Quality Service</title>
+    <!-- Google Fonts: Outfit for a modern, clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">Brand.</a>
+            <nav class="nav">
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link btn btn-primary">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="section hero">
+            <div class="container hero-content">
+                <h1 class="hero-title">Elevate Your Business With Premium Solutions</h1>
+                <p class="hero-subtitle">We describe your value proposition here. Simple, elegant, and effective solutions for modern problems.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <!-- Decorative background elements could go here -->
+            <div class="hero-bg-glow"></div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Who We Are</h2>
+                    <p class="section-desc">Dedicated to excellence and innovation in every project we touch.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="card-icon">🚀</div>
+                        <h3>Fast & Efficient</h3>
+                        <p>We deliver results quickly without compromising on quality.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">💎</div>
+                        <h3>Premium Quality</h3>
+                        <p>Attention to detail is at the core of everything we do.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">🤝</div>
+                        <h3>Customer Focus</h3>
+                        <p>Your satisfaction is our top priority, 24/7.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container contact-container">
+                <div class="contact-text">
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <p class="section-desc">Have a project in mind? Fill out the form and we'll get back to you within 24 hours.</p>
+                    <div class="contact-info">
+                        <p><strong>Email:</strong> invalid@email.com</p>
+                        <p><strong>Phone:</strong> (555) 123-4567</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="How can we help?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>&copy; 2024 Small Business Brand. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

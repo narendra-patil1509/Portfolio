@@ -1,0 +1,11 @@
+light mode changes:
+1. Theme switcher toggle button already there but not seeing because of light mode background color
+2. Make RGB or Other colors combination border for cards specially for projects section cards
+3. Use neon colors for border
+4. In experience section make eye catchy use diff color for years experience
+
+Dark mode changes:
+1. Hero section buttons text not visible due to button background color is white so make it visible
+2. Similar issue for "Tech Stack" text
+3. In experience section make eye catchy use diff color for years experience
+4. Contact section button having same like hero section button background color so make it visible
