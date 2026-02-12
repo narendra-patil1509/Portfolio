@@ -50,10 +50,10 @@ const ProjectDetail = () => {
                             {project.description}
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <Button className="flex items-center gap-2">
+                            <Button href={project.links.demo} className="flex items-center gap-2">
                                 <ExternalLink size={18} /> Live Demo
                             </Button>
-                            <Button variant="outline" className="flex items-center gap-2">
+                            <Button href={project.links.github} variant="outline" className="flex items-center gap-2">
                                 <Github size={18} /> Source Code
                             </Button>
                         </div>

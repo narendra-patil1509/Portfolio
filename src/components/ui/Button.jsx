@@ -10,13 +10,16 @@ const Button = ({ children, variant = 'primary', className = '', ...props }) => 
         ghost: "hover:bg-gray-100 dark:hover:bg-white/5 text-gray-500 dark:text-gray-300 hover:text-foreground font-medium"
     };
 
+    const Component = props.href ? 'a' : 'button';
+    const dynamicProps = props.href ? { target: "_blank", rel: "noopener noreferrer", ...props } : props;
+
     return (
-        <button
+        <Component
             className={`${baseStyles} ${variants[variant]} ${className}`}
-            {...props}
+            {...dynamicProps}
         >
             {children}
-        </button>
+        </Component>
     );
 };
 
