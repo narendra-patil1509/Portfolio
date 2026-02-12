@@ -9,7 +9,7 @@ const Experience = () => {
             company: "Ondirect Marketing",
             role: "PHP Developer",
             period: "2023 - Present",
-            description: "Leading the frontend team in rebuilding the core product using React and Next.js. Improved performance by 40%."
+            description:"Designed and developed email templates pages, ensuring responsive design for multiple email clients using HTML,CSS, and inline styling techniques."
         },
         {
             company: "Innovative Startup",
