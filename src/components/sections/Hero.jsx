@@ -76,33 +76,75 @@ const Hero = () => {
                 </div>
 
                 {/* Profile Image */}
-                <div className="relative flex justify-center order-1 md:order-2 mb-8 md:mb-0">
-                    {/* Floating Icons */}
-                    <div className="absolute top-4 left-4 md:top-10 md:left-10 p-3 bg-card backdrop-blur-md rounded-xl animate-bounce delay-100 shadow-lg border border-primary/30">
-                        <Code className="text-primary" />
-                    </div>
-                    <div className="absolute bottom-10 right-4 md:bottom-20 md:right-10 p-3 bg-card backdrop-blur-md rounded-xl animate-bounce delay-300 shadow-lg border border-primary/30">
-                        <img src={rocketIcon} alt="Rocket" className="w-6 h-6" />
+                <div className="relative flex flex-col items-center order-1 md:order-2 mb-8 md:mb-0">
+                    <div className="relative">
+                        {/* Floating Icons */}
+                        <div className="absolute top-4 left-4 md:top-10 md:left-10 p-3 bg-card backdrop-blur-md rounded-xl animate-bounce delay-100 shadow-lg border border-primary/30 z-20">
+                            <Code className="text-primary" />
+                        </div>
+                        <div className="absolute bottom-10 right-4 md:bottom-20 md:right-10 p-3 bg-card backdrop-blur-md rounded-xl animate-bounce delay-300 shadow-lg border border-primary/30 z-20">
+                            <img src={rocketIcon} alt="Rocket" className="w-6 h-6" />
+                        </div>
+
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                            className="relative w-64 h-80 md:w-96 md:h-[450px] rounded-[2rem] md:rounded-[3rem] overflow-hidden border-4 border-card-border shadow-2xl shadow-primary/20 z-10 hover:grayscale-0 transition-all duration-500"
+                        >
+                            <img
+                                src={profilePic}
+                                alt="Narendra Patil"
+                                className="w-full h-full object-cover"
+                            />
+                        </motion.div>
                     </div>
 
+                    {/* Quick Stats Overlay/Below */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        className="relative w-64 h-80 md:w-96 md:h-[450px] rounded-[2rem] md:rounded-[3rem] overflow-hidden border-4 border-card-border shadow-2xl shadow-primary/20 z-10 hover:grayscale-0 transition-all duration-500"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
+                        className="mt-8 grid grid-cols-2 md:flex items-center gap-4 md:gap-8 px-4 md:px-6 py-4 bg-card/40 backdrop-blur-xl border border-card-border rounded-2xl shadow-2xl relative z-20 group hover:border-primary/50 transition-all duration-300 w-fit"
                     >
-                        <img
-                            src={profilePic}
-                            alt="Narendra Patil"
-                            className="w-full h-full object-cover"
-                        />
+                        <StatItem value="5+" label="Experiences" />
+                        <div className="hidden md:block w-px h-8 bg-card-border" />
+                        <StatItem value="20+" label="Project done" />
+                        <div className="hidden md:block w-px h-8 bg-card-border" />
+                        <StatItem value="80+" label="Happy Clients" />
+                        <div className="hidden md:block w-px h-8 bg-card-border" />
+                        <VisitorCounter />
                     </motion.div>
-
-
                 </div>
             </div>
         </section>
     );
+};
+
+const StatItem = ({ value, label }) => (
+    <div className="flex flex-col items-center md:items-start">
+        <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            {value}
+        </span>
+        <span className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider font-semibold whitespace-nowrap">
+            {label}
+        </span>
+    </div>
+);
+
+const VisitorCounter = () => {
+    const [count, setCount] = React.useState('...');
+
+    React.useEffect(() => {
+        const fetchCount = async () => {
+            const { getVisitorCount } = await import('../../utils/visitorCounter');
+            const visitorCount = await getVisitorCount();
+            setCount(visitorCount > 0 ? `${visitorCount}+` : '1+');
+        };
+        fetchCount();
+    }, []);
+
+    return <StatItem value={count} label="Visitors" />;
 };
 
 export default Hero;

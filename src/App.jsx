@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/sections/Navbar';
 import Hero from './components/sections/Hero';
@@ -24,6 +24,14 @@ const Home = () => (
 );
 
 function App() {
+  useEffect(() => {
+    // We use the global gtag function initialized in index.html
+    if (typeof window.gtag === 'function') {
+      window.gtag('config', 'G-YHFM2B88KT', {
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
   return (
     <Router>
       <ScrollToTop />
