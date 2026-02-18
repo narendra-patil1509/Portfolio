@@ -107,11 +107,11 @@ const Hero = () => {
                         transition={{ duration: 0.6, delay: 0.5 }}
                         className="mt-8 grid grid-cols-2 md:flex items-center gap-4 md:gap-8 px-4 md:px-6 py-4 bg-card/40 backdrop-blur-xl border border-card-border rounded-2xl shadow-2xl relative z-20 group hover:border-primary/50 transition-all duration-300 w-fit"
                     >
-                        <StatItem value="5+" label="Experiences" />
+                        <StatItem value="3+" label="Experiences" />
                         <div className="hidden md:block w-px h-8 bg-card-border" />
-                        <StatItem value="20+" label="Project done" />
+                        <StatItem value="6+" label="Project done" />
                         <div className="hidden md:block w-px h-8 bg-card-border" />
-                        <StatItem value="80+" label="Happy Clients" />
+                        <StatItem value="3+" label="Happy Clients" />
                         <div className="hidden md:block w-px h-8 bg-card-border" />
                         <VisitorCounter />
                     </motion.div>
