@@ -3,32 +3,47 @@
  * or simulating it with LocalStorage if the API is unavailable.
  */
 
-const COUNTER_API_URL = 'https://api.counterapi.dev/v1/narendra-portfolio/visitors/up';
+const API_BASE_URL = 'http://localhost:5000/api';
+
+const getSystemId = () => {
+    let systemId = localStorage.getItem('narendra_portfolio_system_id');
+    if (!systemId) {
+        systemId = 'sys_' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+        localStorage.setItem('narendra_portfolio_system_id', systemId);
+    }
+    return systemId;
+};
 
 export const getVisitorCount = async () => {
     try {
-        // We use a simple counter API. 'up' increments it.
-        // To only count unique per session/user, we could add logic here,
-        // but for a portfolio, a simple 'up' on load is often what's desired
-        // to show total views.
+        const systemId = getSystemId();
 
-        // For "Unique" visitors, we check localStorage first
-        const hasVisited = localStorage.getItem('hasVisitedNarendraPortfolio');
+        // We call the increment endpoint with the systemId.
+        const response = await fetch(`${API_BASE_URL}/visitors/increment`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ systemId })
+        });
 
-        let url = 'https://api.counterapi.dev/v1/narendra-portfolio/visitors';
-
-        if (!hasVisited) {
-            url = COUNTER_API_URL;
-            localStorage.setItem('hasVisitedNarendraPortfolio', 'true');
+        if (!response.ok) {
+            throw new Error('Failed to update visitor count');
         }
 
-        const response = await fetch(url);
         const data = await response.json();
-
         return data.count || 0;
     } catch (error) {
-        console.error('Error fetching visitor count:', error);
-        // Return a plausible number or 0 if it fails
-        return 0;
+        console.error('Error with visitor tracker:', error);
+
+        // Fallback: try to just get the count without incrementing if POST fails
+        try {
+            const response = await fetch(`${API_BASE_URL}/visitors`);
+            const data = await response.json();
+            return data.count || 0;
+        } catch (fallbackError) {
+            console.error('Fallback fetch also failed:', fallbackError);
+            return 0;
+        }
     }
 };

@@ -9,7 +9,7 @@ export const projects = [
         title: 'Password Generator',
         shortDescription: 'Customizable secure password generator with real-time strength control.',
         description: 'A fast and user-friendly password generator that allows users to create secure, customizable passwords based on selected criteria. The application supports dynamic length adjustment, character type selection, and instant generation while maintaining a clean and responsive interface.',
-        tags: ['React', 'Security', 'Utility'],
+        tags: ['React', 'Character Type Toggle', 'Copy-to-Clipboard', 'Responsive Design', 'Tailwind CSS', 'Security', 'Utility'],
         image: passwordGeneratorThumb,
         features: [
             'Customizable password length',
@@ -18,7 +18,7 @@ export const projects = [
             'Copy-to-clipboard functionality',
             'Responsive and minimal UI'
         ],
-        technologies: ['React', 'Vite', 'Tailwind CSS'],
+        technologies: ['React', 'Vite', 'Tailwind CSS', 'Character Type Toggle', 'Copy-to-Clipboard', 'Responsive Design'],
         links: {
             demo: 'https://password-generator-by-narendra.netlify.app/',
             github: 'https://github.com/narendra-patil1509/My-React-Apps/tree/main/Password-Generator'
@@ -30,7 +30,7 @@ export const projects = [
         title: 'MyTodo Context',
         shortDescription: 'Context-based task management app with clean state handling.',
         description: 'A lightweight and intuitive task management application built with modern state management patterns. MyTodo Context demonstrates efficient global state handling using Context API, enabling seamless task creation, updates, and filtering while maintaining a clean and scalable architecture.',
-        tags: ['React', 'Context API', 'Productivity'],
+        tags: ['React', 'Context API', 'Productivity', 'Local Storage', 'Vite', 'Tailwind CSS'],
         image: myTodoAppThumb,
         features: [
             'Global state management using Context API',
@@ -51,7 +51,7 @@ export const projects = [
         title: 'EMT Builder',
         shortDescription: 'Drag-and-drop email template builder for responsive campaigns.',
         description: 'A modern drag-and-drop email template builder designed to help teams create responsive, production-ready email campaigns with ease. It features modular components, real-time editing, and export-ready HTML output while maintaining performance and compatibility across major email clients.',
-        tags: ['Vue', 'Tailwind', 'Vite'],
+        tags: ['React', 'Unlayer', 'API Integration', 'Tailwind', 'Vite'],
         image: emtBuilderThumb,
         features: [
             'Drag-and-drop email template builder',
@@ -72,7 +72,7 @@ export const projects = [
         title: 'Excelizer',
         shortDescription: 'Convert text files into structured Excel spreadsheets instantly.',
         description: 'A lightweight and efficient tool that converts raw text data into structured, downloadable Excel spreadsheets. Excelizer simplifies data transformation by allowing users to paste or upload text files and instantly generate formatted Excel outputs, making it ideal for quick data processing and reporting workflows.',
-        tags: ['Vue', 'Excel', 'Utility'],
+        tags: ['React', 'Excel', 'Utility', 'SheetJS (xlsx)', 'Vite', 'Tailwind CSS'],
         image: txtExcelThumb,
         features: [
             'Convert raw text data to Excel format',

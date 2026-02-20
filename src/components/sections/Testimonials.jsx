@@ -10,19 +10,19 @@ import user3 from '../../assets/user_3.png';
 const Testimonials = () => {
     const reviews = [
         {
-            name: "Sarah Ross",
+            name: "Pratik Chinchore",
             role: "CEO at StartupX",
             content: "Narendra is an exceptional developer who delivered our MVP ahead of schedule. His attention to detail is unmatched.",
             avatar: user1
         },
         {
-            name: "Michael Chen",
+            name: "Kunal Sandanshive",
             role: "CTO at TechFlow",
             content: "Working with Narendra was a pleasure. He writes clean, maintainable code and solves complex problems with ease.",
             avatar: user2
         },
         {
-            name: "Emily Davis",
+            name: "Raj Ingale",
             role: "Product Manager",
             content: "The best frontend engineer I've worked with. He has a great eye for design and user experience.",
             avatar: user3
