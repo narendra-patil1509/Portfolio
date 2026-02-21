@@ -3,7 +3,7 @@
  * or simulating it with LocalStorage if the API is unavailable.
  */
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://visit-tracker.up.railway.app/api/';
 
 const getSystemId = () => {
     let systemId = localStorage.getItem('narendra_portfolio_system_id');
