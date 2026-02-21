@@ -11,6 +11,7 @@ import { ThemeProvider } from './components/ui/ThemeProvider';
 import SmoothScroll from './components/ui/SmoothScroll';
 import CursorFollower from './components/ui/CursorFollower';
 import ProjectDetail from './components/pages/ProjectDetail';
+import AllProjects from './components/pages/AllProjects';
 import ScrollToTop from './components/ui/ScrollToTop';
 
 const Home = () => (
@@ -44,6 +45,7 @@ function App() {
             <main>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/projects" element={<AllProjects />} />
                 <Route path="/project/:id" element={<ProjectDetail />} />
               </Routes>
             </main>

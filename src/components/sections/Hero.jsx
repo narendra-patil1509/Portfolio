@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
 import { ArrowRight, Code, Sparkles } from 'lucide-react';
 import { useTheme } from '../ui/ThemeProvider';
+import SocialQRModal from '../ui/SocialQRModal';
 
 import profilePic from '../../assets/profile_picture.png';
 import topBgLight from '../../assets/top_bg_light.svg';
@@ -13,9 +15,13 @@ import rocketIcon from '../../assets/rocket_icon.svg';
 
 const Hero = () => {
     const { theme } = useTheme();
+    const navigate = useNavigate();
+    const [isQRModalOpen, setIsQRModalOpen] = useState(false);
 
     return (
         <section id="intro" className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden">
+            <SocialQRModal isOpen={isQRModalOpen} onClose={() => setIsQRModalOpen(false)} />
+
             {/* Background Elements */}
             <div className="absolute inset-0 z-0">
                 <picture>
@@ -66,10 +72,13 @@ const Hero = () => {
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
                     >
-                        <Button className="w-full sm:w-auto justify-center">
+                        <Button
+                            className="w-full sm:w-auto justify-center"
+                            onClick={() => setIsQRModalOpen(true)}
+                        >
                             Let's Connect <ArrowRight size={18} className="ml-2 inline" />
                         </Button>
-                        <Button variant="outline" className="w-full sm:w-auto justify-center">
+                        <Button variant="outline" className="w-full sm:w-auto justify-center" onClick={() => navigate('/projects')}>
                             View Projects
                         </Button>
                     </motion.div>

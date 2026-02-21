@@ -3,27 +3,27 @@ import { motion } from 'framer-motion';
 import Card from '../ui/Card';
 import { Quote } from 'lucide-react';
 
-import user1 from '../../assets/user_1.png';
-import user2 from '../../assets/user_2.png';
-import user3 from '../../assets/user_3.png';
+import user1 from '../../assets/1708873437889.jpg';
+import user2 from '../../assets/1669901724816.jpg';
+import user3 from '../../assets/1657297591412.jpg';
 
 const Testimonials = () => {
     const reviews = [
         {
             name: "Pratik Chinchore",
-            role: "CEO at StartupX",
+            role: "On Direct Marketing Services",
             content: "Narendra is an exceptional developer who delivered our MVP ahead of schedule. His attention to detail is unmatched.",
             avatar: user1
         },
         {
             name: "Kunal Sandanshive",
-            role: "CTO at TechFlow",
+            role: "Suzlon Wind Energy Corporation (SWECO)",
             content: "Working with Narendra was a pleasure. He writes clean, maintainable code and solves complex problems with ease.",
             avatar: user2
         },
         {
             name: "Raj Ingale",
-            role: "Product Manager",
+            role: " ORIENS DevSecOps Pvt. Ltd.",
             content: "The best frontend engineer I've worked with. He has a great eye for design and user experience.",
             avatar: user3
         }
