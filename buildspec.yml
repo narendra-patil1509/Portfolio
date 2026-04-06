@@ -13,11 +13,6 @@ phases:
       - echo Building the project...
       - npm run build
 
-  post_build:
-    commands:
-      - echo Deploying to S3...
-      - aws s3 sync dist/ s3://tolksnrdportfolio --delete
-
 artifacts:
   files:
     - '**/*'
