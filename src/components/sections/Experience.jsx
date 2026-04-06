@@ -9,7 +9,7 @@ const Experience = () => {
             company: "Ondirect Marketing",
             role: "PHP Developer",
             period: "2023 - Present",
-            description:"Designed and developed email templates pages, ensuring responsive design for multiple email clients using HTML,CSS, and inline styling techniques."
+            description: "Designed and developed email templates pages, ensuring responsive design for multiple email clients using HTML,CSS, and inline styling techniques."
         },
         {
             company: "Innovative Startup",
@@ -17,12 +17,12 @@ const Experience = () => {
             period: "2021 - 2023",
             description: "Developed and launched multiple features for the SaaS platform. Implemented real-time collaboration using WebSockets."
         },
-        {
-            company: "Digital Agency",
-            role: "Web Developer",
-            period: "2020 - 2021",
-            description: "Built responsive websites for various clients using modern web technologies. Collaborated closely with designers."
-        }
+        // {
+        //     company: "Digital Agency",
+        //     role: "Web Developer",
+        //     period: "2020 - 2021",
+        //     description: "Built responsive websites for various clients using modern web technologies. Collaborated closely with designers."
+        // }
     ];
 
     return (
