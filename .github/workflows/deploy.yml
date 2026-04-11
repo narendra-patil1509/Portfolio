@@ -1,36 +1,36 @@
-name : Portfolio
+name: Portfolio
 
 on:
   push:
     branches:
-      -main
+      - main
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      #checkout the repository
-       -name:Checkout code
-        uses:actions/checkout@v3
+      # checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      #setup node.js
-       -name:Setup Node.js
-        uses:actions/setup-node@v3
+      # setup node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-            node-version:18
+          node-version: 18
 
-      #install dependencies
-       -name:Install Dependencies
-        uses:npm install
+      # install dependencies
+      - name: Install Dependencies
+        run: npm install
 
-      #build project
-       -name:Build project
-        uses:npm run build
+      # build project
+      - name: Build project
+        run: npm run build
 
-      #deploy to github pages
-       -name:Deploy to github pages
-        uses:peaceiris/actions-gh-pages@v3
+      # deploy to github pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token:${{secrets.GITHUB_TOKEN}}
-          publish_dir:dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
