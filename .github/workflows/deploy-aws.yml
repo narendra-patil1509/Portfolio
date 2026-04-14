@@ -1,0 +1,45 @@
+name: Deploy to AWS S3/CloudFront
+
+on:
+  push:
+    branches:
+      - main # Change this to your default branch if different
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Adjust based on your project requirements
+
+      - name: Install Dependencies
+        # Use npm ci for clean installs, or npm i / yarn install
+        run: npm install 
+
+      - name: Build the Project
+        # Adjust if using a different build command (e.g., yarn build)
+        run: npm run build 
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1 # Change to your AWS region
+
+      - name: Deploy to S3 Bucket
+        run: |
+          # Replace 'your-s3-bucket-name' with your actual bucket name.
+          # Change 'dist/' to 'build/' if you are using Create React App instead of Vite.
+          aws s3 sync dist/ s3://your-s3-bucket-name --delete
+
+      # Optional: Uncomment to invalidate CloudFront cache if you use CloudFront in front of S3
+      # - name: Invalidate CloudFront Cache
+      #   run: |
+      #     aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
