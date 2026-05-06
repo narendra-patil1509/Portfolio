@@ -1,60 +1,70 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const CursorFollower = () => {
-    const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
+    const cursorX = useMotionValue(-100);
+    const cursorY = useMotionValue(-100);
+    
+    // Smooth spring configuration
+    const springConfig = { damping: 25, stiffness: 200, mass: 0.5 };
+    const cursorXSpring = useSpring(cursorX, springConfig);
+    const cursorYSpring = useSpring(cursorY, springConfig);
+    
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         const updatePosition = (e) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
-            setIsVisible(true);
+            cursorX.set(e.clientX);
+            cursorY.set(e.clientY);
+            if (!isVisible) setIsVisible(true);
         };
 
         const handleMouseLeave = () => {
             setIsVisible(false);
         };
+        
+        const handleMouseEnter = () => {
+            setIsVisible(true);
+        };
 
         window.addEventListener('mousemove', updatePosition);
         document.body.addEventListener('mouseleave', handleMouseLeave);
+        document.body.addEventListener('mouseenter', handleMouseEnter);
 
         return () => {
             window.removeEventListener('mousemove', updatePosition);
             document.body.removeEventListener('mouseleave', handleMouseLeave);
+            document.body.removeEventListener('mouseenter', handleMouseEnter);
         };
-    }, []);
+    }, [cursorX, cursorY, isVisible]);
 
     return (
         <motion.div
-            className="pointer-events-none fixed z-[9999]"
+            className="pointer-events-none fixed z-[9999] flex items-center justify-center mix-blend-difference"
             style={{
-                left: mousePosition.x,
-                top: mousePosition.y,
+                x: cursorXSpring,
+                y: cursorYSpring,
+                translateX: "-50%",
+                translateY: "-50%",
             }}
             animate={{
-                x: -20,
-                y: -20,
                 opacity: isVisible ? 1 : 0,
-                scale: isVisible ? 1 : 0,
+                scale: isVisible ? 1 : 0.8,
             }}
             transition={{
-                type: "spring",
-                damping: 25,
-                stiffness: 150,
-                mass: 0.6,
                 opacity: { duration: 0.2 },
                 scale: { duration: 0.2 },
             }}
         >
-            {/* Outer glow */}
-            <div className="relative w-10 h-10">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 blur-md opacity-70 animate-pulse" />
-                {/* Inner core */}
-                <div className="absolute inset-2 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400" />
+            {/* Whitish clean cursor */}
+            <div className="relative flex items-center justify-center w-8 h-8">
+                {/* Subtle outer whitish glow/ring */}
+                <div className="absolute inset-0 rounded-full border border-white/40 bg-white/10 backdrop-blur-sm" />
+                {/* Solid white inner core */}
+                <div className="absolute w-2 h-2 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
             </div>
         </motion.div>
     );
 };
 
 export default CursorFollower;
-

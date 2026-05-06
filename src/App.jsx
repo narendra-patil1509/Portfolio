@@ -38,7 +38,7 @@ function App() {
       <ScrollToTop />
       <ThemeProvider>
         <SmoothScroll>
-          <div className="min-h-screen bg-background text-foreground transition-colors duration-300 selection:bg-primary/30">
+          <div className="min-h-screen bg-transparent text-foreground transition-colors duration-300 selection:bg-primary/30">
             <CursorFollower />
             <Navbar />
 

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext();
+const FontContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
     // Check local storage or system preference
@@ -15,6 +16,13 @@ export const ThemeProvider = ({ children }) => {
         return 'dark'; // Default to dark
     });
 
+    const [font, setFont] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('font') || 'inter';
+        }
+        return 'inter';
+    });
+
     useEffect(() => {
         const root = window.document.documentElement;
 
@@ -26,13 +34,25 @@ export const ThemeProvider = ({ children }) => {
         localStorage.setItem('theme', theme);
     }, [theme]);
 
+    useEffect(() => {
+        const root = window.document.documentElement;
+        root.setAttribute('data-font', font);
+        localStorage.setItem('font', font);
+    }, [font]);
+
     const toggleTheme = () => {
         setTheme(prev => prev === 'dark' ? 'light' : 'dark');
     };
 
+    const changeFont = (newFont) => {
+        setFont(newFont);
+    };
+
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            {children}
+            <FontContext.Provider value={{ font, changeFont }}>
+                {children}
+            </FontContext.Provider>
         </ThemeContext.Provider>
     );
 };
@@ -41,6 +61,14 @@ export const useTheme = () => {
     const context = useContext(ThemeContext);
     if (!context) {
         throw new Error('useTheme must be used within a ThemeProvider');
+    }
+    return context;
+};
+
+export const useFont = () => {
+    const context = useContext(FontContext);
+    if (!context) {
+        throw new Error('useFont must be used within a ThemeProvider');
     }
     return context;
 };

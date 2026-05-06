@@ -1,8 +1,94 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { useTheme } from '../ui/ThemeProvider';
+import { Menu, X, Sun, Moon, Type, ChevronDown } from 'lucide-react';
+import { useTheme, useFont } from '../ui/ThemeProvider';
+import profilePic from '../../assets/profile_picture.png';
+
+const fonts = [
+    { id: 'inter', name: 'Inter' },
+    { id: 'roboto', name: 'Roboto' },
+    { id: 'poppins', name: 'Poppins' },
+    { id: 'playfair', name: 'Playfair Display' },
+    { id: 'roboto-mono', name: 'Roboto Mono' },
+    { id: 'noto-sans', name: 'Noto Sans' },
+    { id: 'roboto-condensed', name: 'Roboto Condensed' },
+    { id: 'oswald', name: 'Oswald' },
+    { id: 'raleway', name: 'Raleway' },
+    { id: 'nunito', name: 'Nunito' },
+    { id: 'dm-sans', name: 'DM Sans' },
+    { id: 'nunito-sans', name: 'Nunito Sans' },
+    { id: 'roboto-slab', name: 'Roboto Slab' },
+    { id: 'work-sans', name: 'Work Sans' },
+    { id: 'archivo-black', name: 'Archivo Black' },
+    { id: 'manrope', name: 'Manrope' },
+    { id: 'mono', name: 'Space Mono' },
+];
+
+const fontFamilies = {
+    'inter': 'Inter, sans-serif',
+    'roboto': 'Roboto, sans-serif',
+    'poppins': 'Poppins, sans-serif',
+    'playfair': '"Playfair Display", serif',
+    'roboto-mono': '"Roboto Mono", monospace',
+    'noto-sans': '"Noto Sans", sans-serif',
+    'roboto-condensed': '"Roboto Condensed", sans-serif',
+    'oswald': 'Oswald, sans-serif',
+    'raleway': 'Raleway, sans-serif',
+    'nunito': 'Nunito, sans-serif',
+    'dm-sans': '"DM Sans", sans-serif',
+    'nunito-sans': '"Nunito Sans", sans-serif',
+    'roboto-slab': '"Roboto Slab", serif',
+    'work-sans': '"Work Sans", sans-serif',
+    'archivo-black': '"Archivo Black", sans-serif',
+    'manrope': 'Manrope, sans-serif',
+    'mono': '"Space Mono", monospace',
+};
+
+const FontSwitcher = () => {
+    const { font, changeFont } = useFont();
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="relative pointer-events-auto mt-1 md:mt-0">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center gap-1.5 md:gap-2 bg-black/50 backdrop-blur-md border border-white/10 rounded-full px-2 md:px-3 py-1 md:py-1.5 text-xs md:text-sm text-gray-300 hover:text-white transition-colors"
+            >
+                <Type size={14} />
+                <span className="hidden lg:inline">{fonts.find(f => f.id === font)?.name || 'Font'}</span>
+                <ChevronDown size={14} />
+            </button>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        data-lenis-prevent="true"
+                        className="absolute top-full left-0 md:left-auto md:right-0 lg:left-0 lg:right-auto mt-2 w-40 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-y-auto shadow-xl z-50 max-h-64 custom-scrollbar"
+                    >
+                        {fonts.map((f) => (
+                            <button
+                                key={f.id}
+                                onClick={() => {
+                                    changeFont(f.id);
+                                    setIsOpen(false);
+                                }}
+                                className={`w-full text-left px-3 md:px-4 py-2 text-xs md:text-sm transition-colors ${font === f.id ? 'bg-primary/20 text-primary' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}
+                                style={{ fontFamily: fontFamilies[f.id] }}
+                            >
+                                {f.name}
+                            </button>
+                        ))}
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
+
 
 const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
@@ -53,13 +139,26 @@ const Navbar = () => {
 
     return (
         <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center items-start px-4 pointer-events-none">
+            {/* Desktop Left Font Switcher */}
+            <div className="hidden md:block absolute left-4 lg:left-10 top-0 pointer-events-auto">
+                <FontSwitcher />
+            </div>
+
             {/* Desktop Center Pill */}
             <motion.div
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-                className="hidden md:flex bg-black/80 backdrop-blur-md border border-white/10 rounded-full p-1 items-center gap-1 shadow-2xl pointer-events-auto"
+                className="hidden md:flex bg-black/80 backdrop-blur-md border-[0.5px] border-white/20 rounded-full p-1.5 items-center gap-1 shadow-2xl pointer-events-auto"
             >
+                {/* Profile Pic & Name */}
+                <div className="flex items-center gap-3 pl-2 pr-4 py-1">
+                    <img src={profilePic} alt="Narendra" className="w-8 h-8 rounded-full object-cover border border-white/20" />
+                    <span className="text-white font-bold text-base tracking-wide">Narendra</span>
+                </div>
+
+                {/* Nav Items */}
+                <div className="flex items-center gap-1 border-l border-white/10 pl-2">
                 {navItems.map((item) => {
                     const sectionId = item.href.substring(1);
                     const isActive = isHomePage && activeSection === sectionId;
@@ -85,6 +184,7 @@ const Navbar = () => {
                         </a>
                     );
                 })}
+                </div>
             </motion.div>
 
             {/* Desktop Right Toggle */}
@@ -109,10 +209,14 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Header (Pill-ish container) */}
-            <div className="md:hidden w-full flex justify-between items-center bg-black/80 backdrop-blur-md rounded-full px-4 py-3 border border-white/10 pointer-events-auto">
-                <Link to="/" className="text-white font-bold text-lg px-2">NP</Link>
+            <div className="md:hidden w-full flex justify-between items-center bg-black/80 backdrop-blur-md rounded-full px-4 py-3 border-[0.5px] border-white/20 pointer-events-auto">
+                <Link to="/" className="flex items-center gap-2">
+                    <img src={profilePic} alt="Narendra" className="w-8 h-8 rounded-full object-cover border border-white/20" />
+                    <span className="text-white font-bold text-lg">Narendra</span>
+                </Link>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 md:gap-4">
+                    <FontSwitcher />
                     {/* Mobile Toggle */}
                     <div
                         className={`relative w-14 h-7 rounded-full flex items-center p-0.5 cursor-pointer transition-colors duration-300 border ${theme === 'dark' ? 'bg-black/50 border-white/10' : 'bg-neutral-200/50 border-black/5'

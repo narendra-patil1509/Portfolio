@@ -13,7 +13,7 @@ const Footer = () => {
     return (
         <footer id="contact" className="py-20 pb-10">
             <div className="max-w-4xl mx-auto px-6">
-                <div className="bg-card/30 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden border-2 border-transparent bg-clip-padding before:absolute before:inset-0 before:-z-10 before:p-[2px] before:bg-gradient-to-r before:from-purple-500 before:via-pink-500 before:to-blue-500 before:rounded-3xl" style={{ borderImage: 'linear-gradient(to right, rgb(168 85 247), rgb(236 72 153), rgb(59 130 246)) 1' }}>
+                <div className="bg-card/30 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden border-2 border-transparent bg-clip-padding before:absolute before:inset-0 before:-z-10 before:p-[2px] before:bg-gradient-to-r before:from-purple-00 before:via-pink-00 before:to-blue-00 before:rounded-3xl" style={{ borderImage: 'linear-gradient(to right, rgb(168 85 247), rgb(236 72 153), rgb(59 130 246)) 1' }}>
                     {/* Decorative globs */}
                     <div className="absolute top-0 left-0 w-full h-full bg-grid-white/[0.02] [mask-image:linear-gradient(to_bottom,transparent,black)] dark:bg-grid-white/[0.02] bg-grid-black/[0.02]"></div>
 

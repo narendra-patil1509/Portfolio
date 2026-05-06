@@ -45,7 +45,7 @@ const Experience = () => {
                             role="article"
                             className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-xl transition-all"
                         >
-                            <Card className="flex gap-6 items-start bg-card/40 relative overflow-hidden border border-transparent bg-clip-padding before:absolute before:inset-0 before:-z-10 before:p-[1px] before:bg-gradient-to-r before:from-transparent before:via-transparent before:to-transparent hover:before:from-cyan-500 hover:before:via-primary hover:before:to-purple-500 focus-within:before:from-cyan-500 focus-within:before:via-primary focus-within:before:to-purple-500 before:rounded-xl before:transition-all before:duration-500 hover:shadow-[0_0_25px_-5px_oklch(var(--primary)/0.3)] focus-within:shadow-[0_0_25px_-5px_oklch(var(--primary)/0.3)] cursor-pointer">
+                            <Card className="flex gap-6 items-start bg-card/40 relative overflow-hidden border border-border/20 rounded-xl cursor-pointer hover:bg-card/60 transition-all duration-300">
                                 <div className="hidden md:flex flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full items-center justify-center text-primary">
                                     <Briefcase size={20} />
                                 </div>
