@@ -44,8 +44,17 @@ const CursorFollower = () => {
 
     useEffect(() => {
         const updatePosition = (e) => {
-            cursorX.set(e.clientX);
-            cursorY.set(e.clientY);
+            let x, y;
+            if (e.touches && e.touches.length > 0) {
+                x = e.touches[0].clientX;
+                y = e.touches[0].clientY;
+            } else {
+                x = e.clientX;
+                y = e.clientY;
+            }
+            
+            cursorX.set(x);
+            cursorY.set(y);
             if (!isVisible) setIsVisible(true);
         };
 
@@ -58,11 +67,17 @@ const CursorFollower = () => {
         };
 
         window.addEventListener('mousemove', updatePosition);
+        window.addEventListener('touchmove', updatePosition, { passive: true });
+        window.addEventListener('touchstart', updatePosition, { passive: true });
+        window.addEventListener('touchend', handleMouseLeave);
         document.body.addEventListener('mouseleave', handleMouseLeave);
         document.body.addEventListener('mouseenter', handleMouseEnter);
 
         return () => {
             window.removeEventListener('mousemove', updatePosition);
+            window.removeEventListener('touchmove', updatePosition);
+            window.removeEventListener('touchstart', updatePosition);
+            window.removeEventListener('touchend', handleMouseLeave);
             document.body.removeEventListener('mouseleave', handleMouseLeave);
             document.body.removeEventListener('mouseenter', handleMouseEnter);
         };
