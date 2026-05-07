@@ -44,7 +44,7 @@ const TechStack = () => {
     const x2 = useTransform(scrollYProgress, [0, 1], ["-15%", "0%"]);
 
     return (
-        <section id="skills" ref={sectionRef} className="py-20 bg-muted/30 overflow-hidden">
+        <section id="skills" ref={sectionRef} className="py-20 relative bg-transparent overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 text-center">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-12 text-foreground flex justify-center items-center gap-2 whitespace-nowrap">
                     <span className="text-2xl sm:text-3xl">💻</span>

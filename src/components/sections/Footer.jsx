@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../ui/Button';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Mail } from 'lucide-react';
 import { useTheme } from '../ui/ThemeProvider';
 
 import twitterIcon from '../../assets/twitter_icon.svg';
@@ -28,13 +28,8 @@ const Footer = () => {
                             I'm currently available for freelance projects and open to full-time opportunities.
                         </p>
 
-                        <Button className="w-full sm:w-auto px-6 py-3 sm:px-10 sm:py-5 text-base sm:text-lg rounded-full bg-primary hover:bg-primary/90 shadow-[0_10px_40px_-10px_rgba(124,58,237,0.6)] hover:shadow-[0_10px_40px_-5px_rgba(124,58,237,0.8)] transition-all duration-300 border-none font-bold">
-                            <img
-                                src={mailIcon}
-                                alt="Mail"
-                                className="w-5 h-5 sm:w-6 sm:h-6 mr-3 inline transition-all duration-300"
-                                style={{ filter: theme === 'dark' ? 'brightness(0)' : 'none' }}
-                            />
+                        <Button className="w-full sm:w-auto px-6 py-3 sm:px-10 sm:py-5 text-base sm:text-lg font-bold">
+                            <Mail className="w-5 h-5 sm:w-6 sm:h-6 mr-3 inline transition-all duration-300" />
                             Get in Touch
                         </Button>
                     </div>

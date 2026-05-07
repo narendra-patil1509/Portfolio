@@ -4,7 +4,7 @@ import Navbar from './components/sections/Navbar';
 import Hero from './components/sections/Hero';
 import TechStack from './components/sections/TechStack';
 import Projects from './components/sections/Projects';
-import Testimonials from './components/sections/Testimonials';
+import CurrentlyLearning from './components/sections/CurrentlyLearning';
 import Experience from './components/sections/Experience';
 import Footer from './components/sections/Footer';
 import { ThemeProvider } from './components/ui/ThemeProvider';
@@ -19,8 +19,8 @@ const Home = () => (
     <Hero />
     <TechStack />
     <Projects />
-    <Testimonials />
     <Experience />
+    <CurrentlyLearning />
   </>
 );
 

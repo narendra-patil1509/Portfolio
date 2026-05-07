@@ -9,7 +9,7 @@ export const projects = [
         title: 'Password Generator',
         shortDescription: 'Customizable secure password generator with real-time strength control.',
         description: 'A fast and user-friendly password generator that allows users to create secure, customizable passwords based on selected criteria. The application supports dynamic length adjustment, character type selection, and instant generation while maintaining a clean and responsive interface.',
-        tags: ['React', 'Character Type Toggle', 'Copy-to-Clipboard', 'Responsive Design', 'Tailwind CSS', 'Security', 'Utility'],
+        tags: ['React', 'Character Type Toggle', 'Copy-to-Clipboard'],
         image: passwordGeneratorThumb,
         features: [
             'Customizable password length',
@@ -18,7 +18,7 @@ export const projects = [
             'Copy-to-clipboard functionality',
             'Responsive and minimal UI'
         ],
-        technologies: ['React', 'Vite', 'Tailwind CSS', 'Character Type Toggle', 'Copy-to-Clipboard', 'Responsive Design'],
+        technologies: ['React', 'Tailwind CSS', 'Character Type Toggle', 'Copy-to-Clipboard', 'Responsive Design'],
         links: {
             demo: 'https://password-generator-by-narendra.netlify.app/',
             github: 'https://github.com/narendra-patil1509/My-React-Apps/tree/main/Password-Generator'
